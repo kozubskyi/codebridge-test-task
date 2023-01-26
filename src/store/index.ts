@@ -1,12 +1,14 @@
 import { configureStore } from '@reduxjs/toolkit'
-import { useDispatch } from 'react-redux'
-import filterReducer from './filter/reducer'
-import articlesReducer from './articles/reducer'
+// import { useDispatch } from 'react-redux'
+import { filterReducer, articleListReducer, isLoadingReducer } from './slices'
+// import articlesReducer from './articles/reducer'
+// import articleReducer from './article/reducer'
 
 const store = configureStore({
 	reducer: {
 		filter: filterReducer,
-		articles: articlesReducer
+		articleList: articleListReducer,
+		isLoading: isLoadingReducer
 	},
 	devTools: process.env.NODE_ENV !== 'production'
 })

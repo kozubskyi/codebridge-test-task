@@ -1,9 +1,11 @@
 import axios from 'axios'
 
-axios.defaults.baseURL = 'https://api.spaceflightnewsapi.net/v3/'
+axios.defaults.baseURL = 'https://api.spaceflightnewsapi.net/v3/articles'
 
-export const getArticles = (limit: number = 100) => {
-	return axios.get(`/articles?_limit=${limit}`).then(response => response.data)
+export const getArticles = (quantity: number = 100) => {
+	return axios.get(`?_limit=${quantity}`).then(response => response.data)
 }
 
-export const getArticle = (id: number) => axios.get(`/articles/${id}`)
+export const getArticle = (id: number) => {
+	return axios.get(`/${id}`).then(response => response.data)
+}

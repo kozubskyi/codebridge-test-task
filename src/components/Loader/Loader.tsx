@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 
 const Loader = () => {
-	const [value, setValue] = useState('Loading')
+	const [value, setValue] = useState('Loading...')
 
 	useEffect(() => {
 		const intervalId = setInterval(
