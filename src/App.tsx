@@ -1,26 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { FC } from 'react'
+import RouteList from './routes/RouteList'
+import { Routes, Route, Navigate } from 'react-router-dom'
+import './App.scss'
+import { Home, Article } from './pages'
+import Container from './components/Container/Container'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const App: FC = () => {
+	return (
+		<div className="App">
+			<Container>
+				{/* <RouteList /> */}
+				<Routes>
+					<Route path="/" element={<Home />} />
+					<Route path="/articles/:id" element={<Article />} />
+					<Route path="*" element={<Navigate to="/" replace />} />
+				</Routes>
+			</Container>
+		</div>
+	)
 }
 
-export default App;
+export default App

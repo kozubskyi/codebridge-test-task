@@ -1,0 +1,17 @@
+.ArticleList {
+	& > p {
+		font-weight: 600;
+		padding-bottom: 5px;
+		border-bottom: 1px solid #eaeaea;
+	}
+
+	& ul {
+		display: flex;
+		justify-content: space-between;
+		flex-wrap: wrap;
+	}
+
+	& li {
+		margin-bottom: 45px;
+	}
+}
