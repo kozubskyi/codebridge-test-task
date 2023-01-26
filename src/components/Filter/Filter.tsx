@@ -1,22 +1,20 @@
 import { FC, ChangeEvent } from 'react'
 import { TextField, Box } from '@mui/material'
-// import { useSelector, useDispatch } from 'react-redux'
 import './Filter.scss'
-// import { filterChange } from '../../redux/filter/actions'
-// import { RootState } from '../../redux/store'
 import { useAppSelector, useAppDispatch } from '../../store/hooks'
-import { typing } from '../../store/slices/FilterSlice'
-import { getArticleList, filterArticleList } from '../../store/slices/ArticleListSlice'
-import { loading } from '../../store/slices/IsLoadingSlice'
+import { isLoadingSlice, filterSlice, articleListSlice } from '../../store/slices'
+import { fetchArticles } from '../../services/api'
 import SearchIcon from '../SearchIcon/SearchIcon'
-import { getArticles } from '../../services/api'
+
+const { actions: filterActions } = filterSlice
+const { actions: articleListActions } = articleListSlice
+const { actions: isLoadingActions } = isLoadingSlice
 
 const Filter: FC = () => {
 	const filter = useAppSelector(state => state.filter)
 	const dispatch = useAppDispatch()
-	// const [filter, setFilter] = useState('')
 
-	const onChange = (evt: ChangeEvent<HTMLInputElement>) => dispatch(typing(evt.target.value))
+	const onChange = (evt: ChangeEvent<HTMLInputElement>) => dispatch(filterActions.change(evt.target.value))
 
 	return (
 		<Box
@@ -39,15 +37,15 @@ const Filter: FC = () => {
 			<button
 				type="button"
 				onClick={() => {
-					dispatch(loading(true))
+					dispatch(isLoadingActions.set(true))
 
-					getArticles()
+					fetchArticles()
 						.then(data => {
-							dispatch(getArticleList(data))
-							dispatch(filterArticleList(filter))
+							dispatch(articleListActions.setArticles(data))
+							dispatch(articleListActions.filterArticles(filter))
 						})
 						.catch(console.log)
-						.finally(() => dispatch(loading(false)))
+						.finally(() => dispatch(isLoadingActions.set(false)))
 				}}
 			>
 				filter

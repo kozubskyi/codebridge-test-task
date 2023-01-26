@@ -4,10 +4,8 @@ const isLoading = createSlice({
 	name: 'isLoading',
 	initialState: true,
 	reducers: {
-		loading: (state, action) => action.payload
+		set: (state, action) => (state = action.payload)
 	}
 })
 
-export const { loading } = isLoading.actions
-
-export default isLoading.reducer
+export default isLoading

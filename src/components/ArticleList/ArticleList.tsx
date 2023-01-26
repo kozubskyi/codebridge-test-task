@@ -1,21 +1,23 @@
-import { FC, useEffect, useState } from 'react'
+import { FC, useEffect } from 'react'
 import './ArticleList.scss'
 import { useAppSelector, useAppDispatch } from '../../store/hooks'
-import { getArticleList } from '../../store/slices/ArticleListSlice'
-import { loading } from '../../store/slices/IsLoadingSlice'
-import { getArticles } from '../../services/api'
+import { isLoadingSlice, articleListSlice } from '../../store/slices'
+import { fetchArticles } from '../../services/api'
 import ArticleItem from '../ArticleItem/ArticleItem'
 import Loader from '../Loader/Loader'
+
+const { actions: articleListActions } = articleListSlice
+const { actions: isLoadingActions } = isLoadingSlice
 
 const ArticleList: FC = () => {
 	const { articleList, isLoading } = useAppSelector(state => state)
 	const dispatch = useAppDispatch()
 
 	useEffect(() => {
-		getArticles()
-			.then(data => dispatch(getArticleList(data)))
+		fetchArticles()
+			.then(data => dispatch(articleListActions.setArticles(data)))
 			.catch(console.log)
-			.finally(() => dispatch(loading(false)))
+			.finally(() => dispatch(isLoadingActions.set(false)))
 	}, [])
 
 	return (

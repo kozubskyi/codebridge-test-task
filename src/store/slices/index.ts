@@ -1,3 +1,3 @@
-export { default as filterReducer } from './FilterSlice'
-export { default as articleListReducer } from './ArticleListSlice'
-export { default as isLoadingReducer } from './IsLoadingSlice'
+export { default as filterSlice } from './filter-slice'
+export { default as articleListSlice } from './article-list-slice'
+export { default as isLoadingSlice } from './is-loading-slice'
