@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { NavLink } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { Card, CardMedia, Box, CardContent, Typography } from '@mui/material'
 import './Article.scss'
 import CalendarIcon from '../CalendarIcon/CalendarIcon'
@@ -48,10 +48,10 @@ const Article: FC<IArticleProps> = props => {
 					</Typography>
 				</Box>
 				{/* <Box> */}
-				<NavLink to={`articles/${id}`} className="read-more-button">
+				<Link to={`articles/${id}`} className="read-more-button">
 					Read more
 					<ArrowRightIcon />
-				</NavLink>
+				</Link>
 				{/* </Box> */}
 			</CardContent>
 		</Card>
