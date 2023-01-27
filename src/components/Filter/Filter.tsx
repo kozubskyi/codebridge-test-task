@@ -2,13 +2,14 @@ import { FC, ChangeEvent } from 'react'
 import { TextField, Box } from '@mui/material'
 import './Filter.scss'
 import { useAppSelector, useAppDispatch } from '../../store/hooks'
-import { isLoadingSlice, filterSlice, articleListSlice } from '../../store/slices'
+import { isLoadingSlice, filterSlice, articleListSlice, errorSlice } from '../../store/slices'
 import { fetchArticles } from '../../services/api'
 import SearchIcon from '../SearchIcon/SearchIcon'
 
 const { actions: filterActions } = filterSlice
 const { actions: articleListActions } = articleListSlice
 const { actions: isLoadingActions } = isLoadingSlice
+const { actions: errorActions } = errorSlice
 
 const Filter: FC = () => {
 	const filter = useAppSelector(state => state.filter)
@@ -44,7 +45,7 @@ const Filter: FC = () => {
 							dispatch(articleListActions.setArticles(data))
 							dispatch(articleListActions.filterArticles(filter))
 						})
-						.catch(console.log)
+						.catch(err => dispatch(errorActions.set(err)))
 						.finally(() => dispatch(isLoadingActions.set(false)))
 				}}
 			>

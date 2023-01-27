@@ -1,7 +1,9 @@
-import { FC } from 'react'
+import { FC, useCallback } from 'react'
 import { Link } from 'react-router-dom'
 import { Card, CardMedia, Box, CardContent, Typography } from '@mui/material'
 import './ArticleItem.scss'
+import { useAppSelector } from '../../store/hooks'
+import Highlight from '../Highlight/Highlight'
 import CalendarIcon from '../CalendarIcon/CalendarIcon'
 import ArrowRightIcon from '../ArrowRightIcon/ArrowRightIcon'
 
@@ -16,8 +18,12 @@ interface IArticleProps {
 const Article: FC<IArticleProps> = props => {
 	const { id, imageUrl, title, publishedAt, summary } = props
 
+	const filter = useAppSelector(state => state.filter)
+
 	const IMAGE_HEIGHT = 217
 	const typographyCommonStyles = { fontFamily: 'inherit', marginBottom: '20px' }
+
+	const highlight = useCallback((text: string) => <Highlight filter={filter} text={text} />, [filter])
 
 	return (
 		<Card variant="outlined" sx={{ maxWidth: 400, height: '100%', boxShadow: '0px 8px 24px rgba(0, 0, 0, 0.05)' }}>
@@ -41,10 +47,10 @@ const Article: FC<IArticleProps> = props => {
 						{publishedAt.toLocaleString().split('T')[0]}
 					</Typography>
 					<Typography variant="h5" sx={typographyCommonStyles}>
-						{title}
+						{highlight(title)}
 					</Typography>
 					<Typography variant="body1" sx={typographyCommonStyles}>
-						{summary}
+						{highlight(summary)}
 					</Typography>
 				</Box>
 				{/* <Box> */}
