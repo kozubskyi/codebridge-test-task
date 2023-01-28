@@ -18,10 +18,10 @@ const ArticleList: FC = () => {
 		dispatch(isLoadingActions.set(true))
 
 		fetchArticles()
-			.then(data => dispatch(articleListActions.setArticles(data)))
+			.then(data => dispatch(articleListActions.set(data)))
 			.catch(err => dispatch(errorActions.set(err)))
 			.finally(() => dispatch(isLoadingActions.set(false)))
-	}, [])
+	}, [dispatch])
 
 	return (
 		<div className="ArticleList">

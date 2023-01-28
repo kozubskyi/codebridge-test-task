@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-const error = createSlice({
+const errorSlice = createSlice({
 	name: 'error',
 	initialState: null,
 	reducers: {
@@ -8,4 +8,7 @@ const error = createSlice({
 	}
 })
 
-export default error
+export const errorActions = errorSlice.actions
+export const errorReducer = errorSlice.reducer
+
+export default errorSlice

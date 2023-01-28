@@ -12,7 +12,7 @@ const Loader = () => {
 		return () => clearInterval(intervalId)
 	}, [])
 
-	return <>{value}</>
+	return <p>{value}</p>
 }
 
 export default Loader

@@ -1,14 +1,17 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-const ArticleListSlice = createSlice({
+const articleListSlice = createSlice({
 	name: 'articleList',
 	initialState: [],
 	reducers: {
-		setArticles: (state, action) => (state = action.payload),
-		filterArticles: (state, action) => {
+		set: (state, action) => (state = action.payload),
+		filter: (state, action) => {
 			return state.filter(({ title }: { title: string }) => title.toLowerCase().includes(action.payload.toLowerCase()))
 		}
 	}
 })
 
-export default ArticleListSlice
+export const articleListActions = articleListSlice.actions
+export const articleListReducer = articleListSlice.reducer
+
+export default articleListSlice

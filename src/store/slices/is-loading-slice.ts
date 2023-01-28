@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-const isLoading = createSlice({
+const isLoadingSlice = createSlice({
 	name: 'isLoading',
 	initialState: true,
 	reducers: {
@@ -8,4 +8,7 @@ const isLoading = createSlice({
 	}
 })
 
-export default isLoading
+export const isLoadingActions = isLoadingSlice.actions
+export const isLoadingReducer = isLoadingSlice.reducer
+
+export default isLoadingSlice

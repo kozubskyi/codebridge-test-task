@@ -1,14 +1,14 @@
-import { Article, Home } from '../pages'
+import { HomePage, ArticlePage } from '../pages'
 // import { Navigate } from 'react-router-dom'
 
 const routes = [
 	{
 		path: '/',
-		element: Home
+		element: HomePage
 	},
 	{
 		path: '/articles/:id',
-		element: Article
+		element: ArticlePage
 	}
 	// {
 	// 	path: '*',

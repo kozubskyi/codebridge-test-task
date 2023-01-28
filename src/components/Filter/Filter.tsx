@@ -4,7 +4,7 @@ import './Filter.scss'
 import { useAppSelector, useAppDispatch } from '../../store/hooks'
 import { isLoadingSlice, filterSlice, articleListSlice, errorSlice } from '../../store/slices'
 import { fetchArticles } from '../../services/api'
-import SearchIcon from '../SearchIcon/SearchIcon'
+import SearchIcon from '../icons/SearchIcon/SearchIcon'
 
 const { actions: filterActions } = filterSlice
 const { actions: articleListActions } = articleListSlice
@@ -42,8 +42,8 @@ const Filter: FC = () => {
 
 					fetchArticles()
 						.then(data => {
-							dispatch(articleListActions.setArticles(data))
-							dispatch(articleListActions.filterArticles(filter))
+							dispatch(articleListActions.set(data))
+							dispatch(articleListActions.filter(filter))
 						})
 						.catch(err => dispatch(errorActions.set(err)))
 						.finally(() => dispatch(isLoadingActions.set(false)))

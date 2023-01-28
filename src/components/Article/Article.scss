@@ -1,0 +1,67 @@
+.loader-wrapper {
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	background-color: white;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+//! image height is 17% of width styles start
+
+.image-wrapper {
+	position: relative;
+	overflow: hidden;
+
+	padding-top: 17%;
+}
+
+.image-wrapper:before {
+	display: block;
+	content: '';
+	width: 100%;
+}
+
+.image-content {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	display: flex;
+	align-items: center;
+}
+
+.Article img {
+	width: 100%;
+}
+
+//! image height is 17% of width styles end
+
+.image-block {
+	display: flex;
+	align-items: center;
+	height: 245px;
+	overflow: hidden;
+}
+
+.content-wrapper {
+	position: relative;
+}
+
+.article-content {
+	position: absolute;
+	top: -60px;
+}
+
+.back-to-homepage-button {
+	display: inline-block;
+	margin: 35px 0 45px 75px;
+	padding: 0;
+	background-color: transparent;
+	border: none;
+	font-family: inherit;
+}

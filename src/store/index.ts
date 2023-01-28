@@ -1,10 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit'
-import { filterSlice, articleListSlice, isLoadingSlice, errorSlice } from './slices'
+import { filterSlice, articleListSlice, articleSlice, isLoadingSlice, errorSlice } from './slices'
 
 const store = configureStore({
 	reducer: {
 		filter: filterSlice.reducer,
 		articleList: articleListSlice.reducer,
+		article: articleSlice.reducer,
 		isLoading: isLoadingSlice.reducer,
 		error: errorSlice.reducer
 	},

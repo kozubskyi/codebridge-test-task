@@ -1,16 +1,14 @@
-import { FC, useEffect } from 'react'
 import Filter from '../components/Filter/Filter'
 import ArticleList from '../components/ArticleList/ArticleList'
+import Container from '../components/Container/Container'
 
-const Home: FC = () => {
-	useEffect(() => {}, [])
-
+const HomePage = () => {
 	return (
-		<>
+		<Container>
 			<Filter />
 			<ArticleList />
-		</>
+		</Container>
 	)
 }
 
-export default Home
+export default HomePage
