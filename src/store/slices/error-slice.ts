@@ -1,10 +1,13 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+
+const initialState = ''
 
 const errorSlice = createSlice({
 	name: 'error',
-	initialState: null,
+	initialState,
 	reducers: {
-		set: (state, action) => (state = action.payload)
+		fetchRequest: state => (state = initialState),
+		fetchError: (state, action: PayloadAction<string>) => (state = action.payload)
 	}
 })
 

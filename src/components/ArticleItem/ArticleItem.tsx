@@ -2,19 +2,12 @@ import { FC, useCallback } from 'react'
 import { Link } from 'react-router-dom'
 import { Card, CardMedia, Box, CardContent, Typography } from '@mui/material'
 import { useAppSelector } from '../../store/hooks'
+import IArticle from '../../models/IArticle'
 import Highlight from '../Highlight/Highlight'
 import CalendarIcon from '../icons/CalendarIcon/CalendarIcon'
 import ArrowRightIcon from '../icons/ArrowRightIcon/ArrowRightIcon'
 
-interface IArticleProps {
-	id: number
-	imageUrl: string
-	publishedAt: Date
-	title: string
-	summary: string
-}
-
-const Article: FC<IArticleProps> = props => {
+const ArticleItem = (props: IArticle) => {
 	const { id, imageUrl, title, publishedAt, summary } = props
 
 	const filter = useAppSelector(state => state.filter)
@@ -25,16 +18,14 @@ const Article: FC<IArticleProps> = props => {
 	const highlight = useCallback((text: string) => <Highlight filter={filter} text={text} />, [filter])
 
 	return (
-		<Link to={`articles/${id}`}>
+		<>
+			{/* <Link to={`articles/${id}`}> */}
 			<Card
 				variant="outlined"
 				sx={{
 					maxWidth: 400,
 					height: '100%',
-					boxShadow: '0px 8px 24px rgba(0, 0, 0, 0.05)',
-					'&:hover, &:focus': {
-						outline: '2px solid rgb(255, 249, 110)'
-					}
+					boxShadow: '0px 8px 24px rgba(0, 0, 0, 0.05)'
 				}}
 			>
 				<CardMedia sx={{ height: IMAGE_HEIGHT }} image={imageUrl} title={title} />
@@ -46,7 +37,7 @@ const Article: FC<IArticleProps> = props => {
 						height: `calc(100% - ${IMAGE_HEIGHT}px)`,
 						// padding: '25px',
 						'&:last-child': {
-							padding: '25px' // bug in MaterialUI
+							padding: '25px' //! bug in MaterialUI
 						}
 					}}
 				>
@@ -66,18 +57,19 @@ const Article: FC<IArticleProps> = props => {
 							{highlight(summary)}
 						</Typography>
 					</Box>
-					{/* <Link to={`articles/${id}`} className="link-button">
+					<Link to={`articles/${id}`} className="link-button">
 						Read more
 						<ArrowRightIcon />
-					</Link> */}
-					<span className="link-button">
+					</Link>
+					{/* <span className="link-button">
 						Read more
 						<ArrowRightIcon />
-					</span>
+					</span> */}
 				</CardContent>
 			</Card>
-		</Link>
+			{/* </Link> */}
+		</>
 	)
 }
 
-export default Article
+export default ArticleItem

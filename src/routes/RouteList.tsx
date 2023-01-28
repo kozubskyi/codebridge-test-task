@@ -6,7 +6,7 @@ const RouteList: FC = () => {
 	return (
 		<Routes>
 			{routes.map(route => (
-				<Route path={route.path}>{<route.element />}</Route>
+				<Route path={route.path} element={<route.element />} />
 			))}
 			<Route path="*" element={<Navigate to="/" replace />} />
 		</Routes>

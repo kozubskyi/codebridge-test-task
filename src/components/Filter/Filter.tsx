@@ -35,22 +35,16 @@ const Filter: FC = () => {
 					sx={{ fontFamily: 'Montserrat' }}
 				/>
 			</Box>
-			<button
+			{/* <button
 				type="button"
 				onClick={() => {
 					dispatch(isLoadingActions.set(true))
 
-					fetchArticles()
-						.then(data => {
-							dispatch(articleListActions.set(data))
-							dispatch(articleListActions.filter(filter))
-						})
-						.catch(err => dispatch(errorActions.set(err)))
-						.finally(() => dispatch(isLoadingActions.set(false)))
+					dispatch(fetchArticles())
 				}}
 			>
 				filter
-			</button>
+			</button> */}
 		</Box>
 	)
 }

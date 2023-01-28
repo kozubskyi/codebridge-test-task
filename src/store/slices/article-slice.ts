@@ -1,10 +1,14 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import IArticle from '../../models/IArticle'
+
+const initialState: IArticle = {} as IArticle
 
 const articleSlice = createSlice({
 	name: 'article',
-	initialState: null,
+	initialState,
 	reducers: {
-		set: (state, action) => (state = action.payload)
+		fetchSuccess: (state, action: PayloadAction<IArticle>) => (state = action.payload),
+		clear: state => (state = initialState)
 	}
 })
 

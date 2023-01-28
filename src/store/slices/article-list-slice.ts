@@ -1,13 +1,14 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import IArticle from '../../models/IArticle'
+
+const initialState: IArticle[] = []
 
 const articleListSlice = createSlice({
 	name: 'articleList',
-	initialState: [],
+	initialState,
 	reducers: {
-		set: (state, action) => (state = action.payload),
-		filter: (state, action) => {
-			return state.filter(({ title }: { title: string }) => title.toLowerCase().includes(action.payload.toLowerCase()))
-		}
+		fetchSuccess: (state, action: PayloadAction<IArticle[]>) => (state = action.payload),
+		clear: state => (state = initialState)
 	}
 })
 

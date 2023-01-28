@@ -3,15 +3,10 @@ import { useLocation, Link } from 'react-router-dom'
 import { Card, CardContent, Typography } from '@mui/material'
 import './Article.scss'
 import { useAppSelector, useAppDispatch } from '../../store/hooks'
-import { articleSlice, isLoadingSlice, errorSlice } from '../../store/slices'
 import { fetchArticle } from '../../services/api'
+import { articleActions } from '../../store/slices/article-slice'
 import Container from '../Container/Container'
-import Loader from '../Loader/Loader'
 import ArrowLeftIcon from '../icons/ArrowLeftIcon/ArrowLeftIcon'
-
-const { actions: articleActions } = articleSlice
-const { actions: isLoadingActions } = isLoadingSlice
-const { actions: errorActions } = errorSlice
 
 const Article: FC = () => {
 	const { article, isLoading } = useAppSelector(state => state)
@@ -21,12 +16,7 @@ const Article: FC = () => {
 	useEffect(() => {
 		const articleId = location.pathname.split('/').slice(-1)[0]
 
-		dispatch(isLoadingActions.set(true))
-
-		fetchArticle(articleId)
-			.then(data => dispatch(articleActions.set(data)))
-			.catch(err => dispatch(errorActions.set(err)))
-			.finally(() => dispatch(isLoadingActions.set(false)))
+		dispatch(fetchArticle(articleId))
 	}, [dispatch, location.pathname])
 
 	if (isLoading || !article)
@@ -45,9 +35,6 @@ const Article: FC = () => {
 					<img src={imageUrl} alt={title} />
 				</div>
 			</div>
-			{/* <div className="image-block">
-				<img src={imageUrl} alt={title} />
-			</div> */}
 			<Container>
 				<div className="content-wrapper">
 					<div className="article-content">
@@ -62,7 +49,7 @@ const Article: FC = () => {
 								sx={{
 									// padding: '50px 75px',
 									'&:last-child': {
-										padding: '50px 75px' // bug in MaterialUI
+										padding: '50px 75px' //! bug in MaterialUI
 									}
 								}}
 							>
@@ -101,11 +88,7 @@ const Article: FC = () => {
 								</Typography>
 							</CardContent>
 						</Card>
-						<button
-							type="button"
-							onClick={() => dispatch(articleActions.set(null))}
-							className="back-to-homepage-button"
-						>
+						<button type="button" onClick={() => dispatch(articleActions.clear())} className="back-to-homepage-button">
 							<Link to="/" className="link-button">
 								<ArrowLeftIcon />
 								Back to homepage
