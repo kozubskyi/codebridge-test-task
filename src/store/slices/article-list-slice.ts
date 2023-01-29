@@ -7,6 +7,7 @@ const articleListSlice = createSlice({
 	name: 'articleList',
 	initialState,
 	reducers: {
+		fetchRequest: state => (state = initialState),
 		fetchSuccess: (state, action: PayloadAction<IArticle[]>) => (state = action.payload),
 		clear: state => (state = initialState)
 	}

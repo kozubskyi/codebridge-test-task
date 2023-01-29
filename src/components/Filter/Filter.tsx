@@ -1,23 +1,23 @@
 import { FC, ChangeEvent, useMemo } from 'react'
 import { TextField, Box } from '@mui/material'
-// import { debounce } from 'lodash-es'
+import debounce from 'lodash.debounce'
 import './Filter.scss'
 import { useAppSelector, useAppDispatch } from '../../store/hooks'
-// import { fetchArticles } from '../../services/spaceflight-news-api'
+import { fetchArticles } from '../../services/spaceflight-news-api'
 import { filterActions } from '../../store/slices/filter-slice'
 import SearchIcon from '../icons/SearchIcon/SearchIcon'
 
 const Filter: FC = () => {
-	const filter = useAppSelector(state => state.filter)
+	// const filter = useAppSelector(state => state.filter)
 	const dispatch = useAppDispatch()
 
-	// const makeRequest = useMemo(() => {
-	// 	return () => debounce(dispatch(fetchArticles()), 2000)
-	// }, [])
-
 	const onChange = (evt: ChangeEvent<HTMLInputElement>) => {
-		dispatch(filterActions.change(evt.target.value))
+		const { value } = evt.target
+		dispatch(filterActions.typing(value))
+		dispatch(fetchArticles(value))
 	}
+
+	const debouncedOnChange = useMemo(() => debounce(onChange, 300), [])
 
 	return (
 		<Box
@@ -32,21 +32,11 @@ const Filter: FC = () => {
 					variant="outlined"
 					size="small"
 					fullWidth
-					value={filter}
-					onChange={onChange}
+					// value={filter}
+					onChange={debouncedOnChange}
 					sx={{ fontFamily: 'Montserrat' }}
 				/>
 			</Box>
-			{/* <button
-				type="button"
-				onClick={() => {
-					dispatch(isLoadingActions.set(true))
-
-					dispatch(fetchArticles())
-				}}
-			>
-				filter
-			</button> */}
 		</Box>
 	)
 }

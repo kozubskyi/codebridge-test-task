@@ -8,13 +8,14 @@ import IArticle from '../models/IArticle'
 
 axios.defaults.baseURL = 'https://api.spaceflightnewsapi.net/v3/articles'
 
-export const fetchArticles = (quantity: number = 100) => {
+export const fetchArticles = (filter: string = '', quantity: number = 100) => {
 	return async (dispatch: AppDispatch) => {
 		try {
+			// dispatch(articleListActions.fetchRequest())
 			dispatch(isLoadingActions.fetchRequest())
 			dispatch(errorActions.fetchRequest())
 
-			const response = await axios.get<IArticle[]>(`?_limit=${quantity}&title_contains=europe`)
+			const response = await axios.get<IArticle[]>(`?_limit=${quantity}&title_contains=${filter}`)
 
 			dispatch(articleListActions.fetchSuccess(response.data))
 		} catch (err) {
@@ -31,6 +32,7 @@ export const fetchArticles = (quantity: number = 100) => {
 export const fetchArticle = (id: number | string) => {
 	return async (dispatch: AppDispatch) => {
 		try {
+			// dispatch(articleActions.fetchRequest())
 			dispatch(isLoadingActions.fetchRequest())
 			dispatch(errorActions.fetchRequest())
 

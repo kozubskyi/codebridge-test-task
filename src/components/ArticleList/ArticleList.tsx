@@ -7,12 +7,12 @@ import Loader from '../Loader/Loader'
 import IArticle from '../../models/IArticle'
 
 const ArticleList: FC = () => {
-	const { articleList, isLoading, error } = useAppSelector(state => state)
+	const { articleList, filter, isLoading, error } = useAppSelector(state => state)
 	const dispatch = useAppDispatch()
 
 	useEffect(() => {
-		dispatch(fetchArticles())
-	}, [dispatch])
+		dispatch(fetchArticles(filter))
+	}, [dispatch, filter])
 
 	return (
 		<div className="ArticleList">
