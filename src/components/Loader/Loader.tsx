@@ -4,15 +4,15 @@ const Loader = () => {
 	const [value, setValue] = useState('Loading...')
 
 	useEffect(() => {
-		const intervalId = setInterval(
-			() => setValue(prevValue => (prevValue === 'Loading...' ? 'Loading' : prevValue + '.')),
-			500
-		)
+		const intervalId = setInterval(() => {
+			// setValue(prevValue => (prevValue === 'Loading...' ? 'Loading' : prevValue + '.'))
+			setValue(prevValue => prevValue.replace('...', '   ').replace(' ', '.'))
+		}, 500)
 
 		return () => clearInterval(intervalId)
 	}, [])
 
-	return <>{value}</>
+	return <span>{value}</span>
 }
 
 export default Loader

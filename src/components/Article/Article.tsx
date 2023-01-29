@@ -3,10 +3,11 @@ import { useLocation, Link } from 'react-router-dom'
 import { Card, CardContent, Typography } from '@mui/material'
 import './Article.scss'
 import { useAppSelector, useAppDispatch } from '../../store/hooks'
-import { fetchArticle } from '../../services/api'
+import { fetchArticle } from '../../services/spaceflight-news-api'
 import { articleActions } from '../../store/slices/article-slice'
 import Container from '../Container/Container'
 import ArrowLeftIcon from '../icons/ArrowLeftIcon/ArrowLeftIcon'
+import Loader from '../Loader/Loader'
 
 const Article: FC = () => {
 	const { article, isLoading } = useAppSelector(state => state)
@@ -21,8 +22,10 @@ const Article: FC = () => {
 
 	if (isLoading || !article)
 		return (
-			<div className="loader-wrapper">
-				<span>Loading...</span>
+			<div className="loader-backdrop">
+				<div className="loader-wrapper">
+					<Loader />
+				</div>
 			</div>
 		)
 

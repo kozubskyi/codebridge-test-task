@@ -1,4 +1,4 @@
-.loader-wrapper {
+.loader-backdrop {
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -8,6 +8,11 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
+}
+
+.loader-wrapper {
+	min-width: 76px;
+	text-align: left;
 }
 
 //! image height is 17% of width styles start

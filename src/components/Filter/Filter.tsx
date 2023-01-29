@@ -3,7 +3,7 @@ import { TextField, Box } from '@mui/material'
 import './Filter.scss'
 import { useAppSelector, useAppDispatch } from '../../store/hooks'
 import { isLoadingSlice, filterSlice, articleListSlice, errorSlice } from '../../store/slices'
-import { fetchArticles } from '../../services/api'
+import { fetchArticles } from '../../services/spaceflight-news-api'
 import SearchIcon from '../icons/SearchIcon/SearchIcon'
 
 const { actions: filterActions } = filterSlice
