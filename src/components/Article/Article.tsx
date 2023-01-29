@@ -10,7 +10,7 @@ import ArrowLeftIcon from '../icons/ArrowLeftIcon/ArrowLeftIcon'
 import Loader from '../Loader/Loader'
 
 const Article: FC = () => {
-	const { article, isLoading } = useAppSelector(state => state)
+	const { article, isLoading, error } = useAppSelector(state => state)
 	const dispatch = useAppDispatch()
 	const location = useLocation()
 
@@ -20,7 +20,7 @@ const Article: FC = () => {
 		dispatch(fetchArticle(articleId))
 	}, [dispatch, location.pathname])
 
-	if (isLoading || !article)
+	if (isLoading || !article) {
 		return (
 			<div className="loader-backdrop">
 				<div className="loader-wrapper">
@@ -28,6 +28,15 @@ const Article: FC = () => {
 				</div>
 			</div>
 		)
+	}
+
+	if (error) {
+		return (
+			<div className="loader-backdrop">
+				<span>Error: {error}</span>
+			</div>
+		)
+	}
 
 	const { imageUrl, title, summary } = article
 

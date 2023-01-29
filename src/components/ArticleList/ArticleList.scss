@@ -1,4 +1,6 @@
 .ArticleList {
+	margin-bottom: 50px;
+
 	& > p {
 		font-weight: 600;
 		padding-bottom: 5px;
@@ -8,11 +10,12 @@
 
 	& ul {
 		display: flex;
-		justify-content: space-between;
+		// justify-content: space-between;
 		flex-wrap: wrap;
+		margin: -22.5px;
 	}
 
 	& li {
-		margin-bottom: 45px;
+		margin: 22.5px;
 	}
 }

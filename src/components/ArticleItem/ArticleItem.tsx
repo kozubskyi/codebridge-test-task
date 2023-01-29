@@ -1,4 +1,4 @@
-import { FC, useCallback } from 'react'
+import { useCallback } from 'react'
 import { Link } from 'react-router-dom'
 import { Card, CardMedia, Box, CardContent, Typography } from '@mui/material'
 import { useAppSelector } from '../../store/hooks'

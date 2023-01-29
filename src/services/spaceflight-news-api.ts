@@ -14,7 +14,7 @@ export const fetchArticles = (quantity: number = 100) => {
 			dispatch(isLoadingActions.fetchRequest())
 			dispatch(errorActions.fetchRequest())
 
-			const response = await axios.get<IArticle[]>(`?_limit=${quantity}`)
+			const response = await axios.get<IArticle[]>(`?_limit=${quantity}&title_contains=europe`)
 
 			dispatch(articleListActions.fetchSuccess(response.data))
 		} catch (err) {

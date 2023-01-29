@@ -2,14 +2,11 @@ import { FC, useEffect } from 'react'
 import './ArticleList.scss'
 import { useAppSelector, useAppDispatch } from '../../store/hooks'
 import { fetchArticles } from '../../services/spaceflight-news-api'
-import { articleListActions } from '../../store/slices/article-list-slice'
-import { isLoadingActions } from '../../store/slices/is-loading-slice'
-import { errorActions } from '../../store/slices/error-slice'
 import ArticleItem from '../ArticleItem/ArticleItem'
 import Loader from '../Loader/Loader'
 import IArticle from '../../models/IArticle'
 
-const ArticleList = () => {
+const ArticleList: FC = () => {
 	const { articleList, isLoading, error } = useAppSelector(state => state)
 	const dispatch = useAppDispatch()
 

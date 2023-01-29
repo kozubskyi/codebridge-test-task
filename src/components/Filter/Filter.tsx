@@ -1,21 +1,23 @@
-import { FC, ChangeEvent } from 'react'
+import { FC, ChangeEvent, useMemo } from 'react'
 import { TextField, Box } from '@mui/material'
+// import { debounce } from 'lodash-es'
 import './Filter.scss'
 import { useAppSelector, useAppDispatch } from '../../store/hooks'
-import { isLoadingSlice, filterSlice, articleListSlice, errorSlice } from '../../store/slices'
-import { fetchArticles } from '../../services/spaceflight-news-api'
+// import { fetchArticles } from '../../services/spaceflight-news-api'
+import { filterActions } from '../../store/slices/filter-slice'
 import SearchIcon from '../icons/SearchIcon/SearchIcon'
-
-const { actions: filterActions } = filterSlice
-const { actions: articleListActions } = articleListSlice
-const { actions: isLoadingActions } = isLoadingSlice
-const { actions: errorActions } = errorSlice
 
 const Filter: FC = () => {
 	const filter = useAppSelector(state => state.filter)
 	const dispatch = useAppDispatch()
 
-	const onChange = (evt: ChangeEvent<HTMLInputElement>) => dispatch(filterActions.change(evt.target.value))
+	// const makeRequest = useMemo(() => {
+	// 	return () => debounce(dispatch(fetchArticles()), 2000)
+	// }, [])
+
+	const onChange = (evt: ChangeEvent<HTMLInputElement>) => {
+		dispatch(filterActions.change(evt.target.value))
+	}
 
 	return (
 		<Box
