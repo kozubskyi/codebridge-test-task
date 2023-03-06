@@ -31,7 +31,7 @@ const ArticleItem = (props: IArticle) => {
 						transition: 'transform 0.2s'
 					}}
 				>
-					<CardMedia sx={{ height: IMAGE_HEIGHT }} image={imageUrl} title={title} />
+					<CardMedia sx={{ height: IMAGE_HEIGHT }} image={imageUrl} title={title} component="img" loading="lazy" />
 					<CardContent
 						sx={{
 							display: 'flex',
