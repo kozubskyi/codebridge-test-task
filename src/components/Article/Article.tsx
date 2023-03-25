@@ -7,6 +7,7 @@ import { fetchArticle } from '../../services/spaceflight-news-api'
 import { articleActions } from '../../store/slices/article-slice'
 import Container from '../Container/Container'
 import ArrowLeftIcon from '../icons/ArrowLeftIcon/ArrowLeftIcon'
+// import { ReactComponent as ArrowLeftIcon } from '../../img/icons/arrow-left.svg'
 import Loader from '../Loader/Loader'
 
 const Article: FC = () => {
@@ -54,15 +55,15 @@ const Article: FC = () => {
 							variant="outlined"
 							sx={{
 								width: '100%',
-								boxShadow: '0px 8px 24px rgba(0, 0, 0, 0.05)'
+								boxShadow: '0px 8px 24px rgba(0, 0, 0, 0.05)',
 							}}
 						>
 							<CardContent
 								sx={{
 									// padding: '50px 75px',
 									'&:last-child': {
-										padding: '50px 75px' //! bug in MaterialUI
-									}
+										padding: '50px 75px', //! bug in MaterialUI
+									},
 								}}
 							>
 								<Typography variant="h5" sx={{ fontFamily: 'inherit', textAlign: 'center', marginBottom: '50px' }}>

@@ -6,6 +6,7 @@ import IArticle from '../../models/IArticle'
 import Highlight from '../Highlight/Highlight'
 import CalendarIcon from '../icons/CalendarIcon/CalendarIcon'
 import ArrowRightIcon from '../icons/ArrowRightIcon/ArrowRightIcon'
+// import { ReactComponent as ArrowRightIcon } from '../../img/icons/arrow-right.svg'
 
 const ArticleItem = (props: IArticle) => {
 	const { id, imageUrl, title, publishedAt, summary } = props
@@ -26,9 +27,9 @@ const ArticleItem = (props: IArticle) => {
 						height: '100%',
 						boxShadow: '0px 8px 24px rgba(0, 0, 0, 0.05)',
 						'&:hover': {
-							transform: 'scale(1.02)'
+							transform: 'scale(1.02)',
 						},
-						transition: 'transform 0.2s'
+						transition: 'transform 0.2s',
 					}}
 				>
 					<CardMedia sx={{ height: IMAGE_HEIGHT }} image={imageUrl} title={title} component="img" loading="lazy" />
@@ -40,8 +41,8 @@ const ArticleItem = (props: IArticle) => {
 							height: `calc(100% - ${IMAGE_HEIGHT}px)`,
 							// padding: '25px',
 							'&:last-child': {
-								padding: '25px' //! bug in MaterialUI
-							}
+								padding: '25px', //! bug in MaterialUI
+							},
 						}}
 					>
 						<Box>

@@ -6,6 +6,7 @@ import { useAppDispatch } from '../../store/hooks'
 import { fetchArticles } from '../../services/spaceflight-news-api'
 import { filterActions } from '../../store/slices/filter-slice'
 import SearchIcon from '../icons/SearchIcon/SearchIcon'
+// import { ReactComponent as SearchIcon } from '../../img/icons/search.svg'
 
 const Filter: FC = () => {
 	// const filter = useAppSelector(state => state.filter)
