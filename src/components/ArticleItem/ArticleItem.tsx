@@ -9,7 +9,7 @@ import ArrowRightIcon from '../icons/ArrowRightIcon/ArrowRightIcon'
 // import { ReactComponent as ArrowRightIcon } from '../../img/icons/arrow-right.svg'
 
 const ArticleItem = (props: IArticle) => {
-	const { id, imageUrl, title, publishedAt, summary } = props
+	const { id, image_url, title, published_at, summary } = props
 
 	const filter = useAppSelector(state => state.filter)
 	const highlight = useCallback((text: string) => <Highlight filter={filter} text={text} />, [filter])
@@ -32,7 +32,7 @@ const ArticleItem = (props: IArticle) => {
 						transition: 'transform 0.2s',
 					}}
 				>
-					<CardMedia sx={{ height: IMAGE_HEIGHT }} image={imageUrl} title={title} component="img" loading="lazy" />
+					<CardMedia sx={{ height: IMAGE_HEIGHT }} image={image_url} title={title} component="img" loading="lazy" />
 					<CardContent
 						sx={{
 							display: 'flex',
@@ -52,7 +52,7 @@ const ArticleItem = (props: IArticle) => {
 								sx={{ ...typographyCommonStyles, display: 'flex', alignItems: 'center' }}
 							>
 								<CalendarIcon />
-								{publishedAt.toLocaleString().split('T')[0]}
+								{published_at.toLocaleString().split('T')[0]}
 							</Typography>
 							<Typography variant="h5" sx={typographyCommonStyles}>
 								{highlight(title)}

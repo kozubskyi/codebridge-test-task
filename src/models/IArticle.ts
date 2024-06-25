@@ -7,11 +7,11 @@ export default interface IArticle {
 	id: number
 	title: string
 	url: string
-	imageUrl: string
-	newsSite: string
+	image_url: string
+	news_site: string
 	summary: string
-	publishedAt: Date
-	updatedAt: Date
+	published_at: Date
+	updated_at: Date
 	featured: boolean
 	launches: ILaunch[]
 	events: any[]

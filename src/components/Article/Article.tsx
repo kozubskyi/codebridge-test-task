@@ -39,13 +39,13 @@ const Article: FC = () => {
 		)
 	}
 
-	const { imageUrl, title, summary } = article
+	const { image_url, title, summary } = article
 
 	return (
 		<div className="Article">
 			<div className="image-wrapper">
 				<div className="image-content">
-					<img src={imageUrl} alt={title} />
+					<img src={image_url} alt={title} />
 				</div>
 			</div>
 			<Container>
